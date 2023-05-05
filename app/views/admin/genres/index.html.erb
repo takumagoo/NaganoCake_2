@@ -11,8 +11,10 @@
 <p>ジャンル</p>
 <% @genres.each do |genre| %>
   <%= genre.name %>
+  <!--編集画面遷移ボタン-->
+  <%= link_to '編集する', edit_admin_genre_path(genre.id) %>
 <% end %>
-<!--編集画面遷移ボタン-->
+
 
 
 
