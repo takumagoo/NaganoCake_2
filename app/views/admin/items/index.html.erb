@@ -1,0 +1,28 @@
+<h3>商品一覧</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜き価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td>
+          <%= link_to admin_item_path(item.id) do %>
+            <%= item.name %>
+          <% end %>
+        </td>
+        <td><%= '税抜き価格' %></td>
+        <td><%= item.genre.name %></td>
+        <td><%= 'ステータス' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
