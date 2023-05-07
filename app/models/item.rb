@@ -16,5 +16,8 @@ class Item < ApplicationRecord
       item_image.variant(resize_to_fill: [width, height]).processed
   end
 
+  def tax_included
+    (price*1.1).floor
+  end
 
 end

@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
-  # namespace :admin do
-  #   get 'items/new'
-  #   get 'items/index'
-  #   get 'items/show'
-  #   get 'items/edit'
-  # end
-  # namespace :admin do
-  #   get 'genres/index'
-  #   get 'genres/edit'
-  # end
+
   # 管理者用
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
@@ -23,6 +14,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
     root to: "home#top"
   end
 
