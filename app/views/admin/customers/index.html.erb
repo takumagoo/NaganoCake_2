@@ -17,13 +17,19 @@
       <!--氏名(詳細画面に遷移リンク)-->
       <td>
         <% link_to admin_customer_path(customer.id) do %>
-          <%= customer.last_name %>
+          <%= customer.last_name %><%= customer.first_name %>
         <% end %>
       </td>
       <!--メールアドレス-->
-      <td></td>
+      <td><%= customer.email %></td>
       <!--ステータス-->
-      <td></td>
+      <td>
+          <% if customer.is_deleted %>
+            <p>有効</p>
+          <% else %>
+            <p>退会</p>
+          <% end %>
+      </td>
     </tr>
   </tbody>
 </tabel>
