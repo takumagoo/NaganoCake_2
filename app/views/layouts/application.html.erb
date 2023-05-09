@@ -12,34 +12,7 @@
 
   <body>
 
-    <header>
-
-      <!--admin時-->
-      <% if request.path == '/admin'%>
-      <!--  admin ログイン後-->
-        <% if admin_signed_in? %>
-          <h3>Logo</h3>
-          <ul>
-            <li>商品一覧</li>
-            <li>会員一覧</li>
-            <li>注文履歴一覧</li>
-            <li>ジャンル一覧</li>
-            <li class="nav-item"><%= link_to "ログアウト",  destroy_admin_session_path, method: :delete, class: "btn btn-sm btn-outline-secondary ml-3" %></li>
-          </ul>
-      <!--  admin ログイン前-->
-        <% else %>
-            <li>about</li>
-            <li>商品一覧</li>
-            <li>新規登録</li>
-            <li class="nav-item"><%= link_to "ログイン", new_admin_session_path, class: "btn btn-sm btn-outline-secondary ml-3" %></li>
-          </ul>
-        <% end %>
-      <!--public時-->
-      <% else %>
-      <!--  public ログイン前-->
-      <!--  public ログイン後-->
-      <% end %>
-    </header>
+  
     <main>
       <%= yield %>
     </main>

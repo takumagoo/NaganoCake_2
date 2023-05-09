@@ -1,8 +1,10 @@
+<%= render 'admin/header' %>
+
 <h3>ジャンル一覧・追加</h3>
 
 <!--ジャンル追加-->
 <%= form_with model: @genre, url:admin_genres_path do |f| %>
-  <p>ジャンル</p>
+  <p>ジャンル名</p>
   <%= f.text_field :name %>
   <%= f.submit '新規登録', class: "btn btn-success" %>
 <% end %>
