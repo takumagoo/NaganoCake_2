@@ -1,36 +1,58 @@
 <%= render 'admin/header' %>
 
-<h3>商品一覧</h3>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-10">
+      <div class="row">
+        <div class="col-7">
+          <h3>商品一覧</h3>
+        </div>
+        <div class="col-3">
+          <!--アイコン挿入-->
+          <%= link_to new_admin_item_path do%>
+            <%= "新規登録" %>
+          <% end %>
+        </div>
+      </div>
+      <table class="table table-hover table-inverse">
+        <thead class="table-secondary">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜き価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td>
+                <%= link_to admin_item_path(item.id) do %>
+                  <%= item.name %>
+                <% end %>
+              </td>
+              <td><%= item.price %></td>
+              <td><%= item.genre.name %></td>
+              <td>
+                <% if item.is_active %>
+                  <p class="text-success font-weight-bold">販売中</p>
+                <% else %>
+                  <p class="text-secondary font-weight-bold">販売停止中</p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜き価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-      <tr>
-        <td><%= item.id %></td>
-        <td>
-          <%= link_to admin_item_path(item.id) do %>
-            <%= item.name %>
-          <% end %>
-        </td>
-        <td><%= item.price %></td>
-        <td><%= item.genre.name %></td>
-        <td>
-          <% if item.is_active %>
-            <p>販売中</p>
-          <% else %>
-            <p>販売停止中</p>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+
+
+
+
+

@@ -1,22 +1,70 @@
 <%= render 'admin/header' %>
 
-<h3>商品詳細</h3>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-12">
+      <h3>商品詳細</h3>
+      <div class="row mt-4">
+        <div class="col-4">
+          <!--商品画像-->
+          <%= image_tag @item.get_item_image(300, 300, "center") %>
+        </div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-3">
+              <p>商品名</p>
+            </div>
+            <div class="col-5">
+              <%= @item.name %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3">
+              <p>商品説明</p>
+            </div>
+            <div class="col-5">
+              <%= @item.introduction %>
+            </div>
+          </div>
 
-<!--商品画像-->
-<%= image_tag @item.get_item_image(300, 300, "center") %>
-<!--商品名-->
-<%= @item.name %>
-<!--商品説明-->
-<%= @item.introduction %>
-<!--ジャンル-->
-<%= @item.genre.name %>
-<!--税込み価格(税抜き価格)-->
-<%= @item.price %>(<%= @item.tax_included %>)円
-<!--販売ステータス-->
-<% if @item.is_active %>
-   <p>販売中</p>
-<% else %>
-    <p>販売停止中</p>
-<% end %>
-<%= link_to '編集する', edit_admin_item_path(@item.id) %>
+          <div class="row">
+            <div class="col-3">
+              <p>ジャンル</p>
+            </div>
+            <div class="col-5">
+              <%= @item.genre.name %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <p>
+                税込み価格<br />(税抜き価格)
+              </p>
+            </div>
+            <div class="col-5">
+              <%= @item.price %>(<%= @item.tax_included %>)円
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+              <p>販売ステータス</p>
+            </div>
+            <div class="col-5">
+              <% if @item.is_active %>
+                 <p class="text-success font-weight-bold">販売中</p>
+              <% else %>
+                  <p class="text-secondary font-weight-bold">販売停止中</p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8 offset-4">
+        <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
+</div>
 
