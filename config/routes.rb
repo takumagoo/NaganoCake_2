@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "home#top"
     get 'home/about' => 'home#about'
-    resources :customers, only: [:show, :edit, :update]
+    get 'customers/mypage' => 'customers#show'
+    resources :customers, only: [:edit, :update]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

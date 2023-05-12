@@ -1,2 +1,35 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<%= render 'public/header' %>
+
+<h3>マイページ</h3>
+
+<!--編集画面遷移ボタン-->
+<h5><strong>登録情報</strong></h5>
+<%= link_to '編集する', edit_customer_path(current_customer), class: "btn btn-success" %>
+<!--氏名-->
+<label>氏名</label>
+<%= current_customer.last_name %> <%= current_customer.first_name %>
+
+<!--カン-->
+<label>カナ</label>
+<%= current_customer.last_name_kana %> <%= current_customer.first_name_kana %>
+
+<!--郵便番号-->
+<label>郵便番号</label>
+<%= current_customer.postal_code %>
+
+<!--住所-->
+<label>住所</label>
+<%= current_customer.address %>
+
+<!--電話番号-->
+<label>電話番号</label>
+<%= current_customer.telephone_number %>
+
+<!--メールアドレス-->
+<label>メールアドレス</label>
+<%= current_customer.email %>
+
+<!--配送先一覧画面遷移ボタン-->
+<h5><strong>配送先一</strong></h5>
+<!--注文履歴画面遷移ボタン-->
+<h5><strong>注文履歴画面遷移</strong></h5>
