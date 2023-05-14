@@ -23,8 +23,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "home#top"
     get 'home/about' => 'home#about'
+    patch 'customers/withdraw' => 'customers#withdraw'
     get 'customers/mypage' => 'customers#show'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
     resources :customers, only: [:edit, :update]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :items, only: [:index, :show]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

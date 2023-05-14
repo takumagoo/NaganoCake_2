@@ -1,0 +1,25 @@
+<%= render 'public/header' %>
+
+<!--商品一覧 => ジャンルで指定された商品を表示、ジャンル指定されなければ全ての商品を表示-->
+<h3>商品一覧</h3>
+
+<!--ジャンル検索-->
+<p>ジャンル検索</p>
+
+<% @genres.each do |genre|%>
+  <%= link_to items_path(genre: genre.id) do %>
+    <%= genre.name %>
+  <% end %>
+<% end %>
+
+<% if @genre.blank? %>
+  <h3>商品一覧(全×件)</h3>
+<% else %>
+  <h3><%= @genre.name %></h3>
+<% end %>
+
+<% @items.each do |item|%>
+  <%= image_tag  item.get_item_image(200, 200, "Center") %>
+  <%=  item.name %>
+  <%=  item.tax_included %>
+<% end %>
