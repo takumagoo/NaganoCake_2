@@ -19,7 +19,9 @@
 <% end %>
 
 <% @items.each do |item|%>
-  <%= image_tag  item.get_item_image(200, 200, "Center") %>
+  <%= link_to item_path(item.id) do %>
+    <%= image_tag  item.get_item_image(200, 200, "Center") %>
+  <% end %>
   <%=  item.name %>
   <%=  item.tax_included %>
 <% end %>

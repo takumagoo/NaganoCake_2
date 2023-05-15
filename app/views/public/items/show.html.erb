@@ -1,2 +1,28 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<%= render 'public/header' %>
+
+<!--ジャンル検索-->
+<p>ジャンル検索</p>
+
+<% @genres.each do |genre|%>
+  <%= link_to items_path(genre: genre.id) do %>
+    <%= genre.name %>
+  <% end %>
+<% end %>
+
+<!--商品画像-->
+<%= image_tag @item.get_item_image(300, 300, "center") %>
+<!--商品名-->
+<strong><%= @item.name %></strong>
+<!--商品説明-->
+<%= @item.introduction %>
+<!--税込み金額-->
+￥<%= @item.tax_included %>(税込み)
+
+<%= form_with(model: @cart_item, url: cart_items_path, method: :post) do |f| %>
+<!--個数入力-->
+
+  <%= f.select :amount, *[1..10] %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+<!--カート追加-->
+  <%= f.submit "カートに入れる", class: "btn btn-primary" %>
+<% end %>
