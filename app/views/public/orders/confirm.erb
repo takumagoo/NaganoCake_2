@@ -1,0 +1,38 @@
+<%= render 'public/header' %>
+
+<h3>注文情報確認画面</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込み)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @total_amount = 0 %>
+
+    <% current_customer.cart_items.each do |cart_item|%>
+      <tr>
+        <% @subtotal = 0 %>
+        <td><%= cart_item.item.name %></td>
+        <td><%= cart_item.item.tax_included %></td>
+        <td><%= cart_item.amount %></td>
+        <!--小計を求める (個数と単価の掛け算)-->
+        <% @subtotal = cart_item.item.tax_included*cart_item.amount %>
+        <td><%= @subtotal %></td>
+        <!--合計金額を求める (小計を足す)-->
+        <% @total_amount += @subtotal %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+

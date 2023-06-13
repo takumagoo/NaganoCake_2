@@ -60,3 +60,6 @@ gem 'devise'
 
 # kaminariの導入
 gem 'kaminari','~> 1.2.1'
+
+#enumの導入
+gem "enum_help"
