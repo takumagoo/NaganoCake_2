@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'orders/show'
+  end
   # 管理者用
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
@@ -16,6 +19,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     root to: "home#top"
+    resources :orders, only: [:show] do
+      resources :order_details, only: [:update]
+    end
   end
 
 
